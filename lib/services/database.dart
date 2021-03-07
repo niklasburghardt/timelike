@@ -22,8 +22,10 @@ class DatabaseService {
     try {
       return await userData
           .document(uid)
-          .collection("days")
+          .collection("Days")
           .document(getDate())
+          .collection("Posts")
+          .document()
           .setData({'title': title, 'story': story, 'private': private});
     } catch (error) {
       print("Unable to upload");
