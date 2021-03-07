@@ -10,49 +10,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool showSignIn = true;
+  bool showOnlyYour = true;
   void toggleView() {
     //print(showSignIn.toString());
-    setState(() => showSignIn = !showSignIn);
-  }
-
-  HomePageYou homePageYou;
-  HomePageFriends homePageFriends;
-  List<Widget> pages;
-  int index;
-
-  @override
-  void initState() {
-    homePageFriends = HomePageFriends(
-      toggleView: toggleView,
-    );
-    homePageYou = HomePageYou(
-      toggleView: toggleView,
-    );
-    index = 0;
-    pages = [homePageYou, homePageFriends];
+    setState(() => showOnlyYour = !showOnlyYour);
   }
 
   @override
   Widget build(BuildContext context) {
-    if (showSignIn) {
-      index = 0;
-    } else {
-      index = 1;
-    }
     return PageTransitionSwitcher(
-      duration: Duration(milliseconds: 400),
-      transitionBuilder: (child, animation, secondaryAnimation) =>
-          SharedAxisTransition(
-        transitionType: SharedAxisTransitionType.horizontal,
-        animation: animation,
-        secondaryAnimation: secondaryAnimation,
-        child: child,
-      ),
-      child: Container(
-        key: ValueKey<int>(index),
-        child: pages[index],
-      ),
-    );
+        duration: Duration(milliseconds: 400),
+        reverse: showOnlyYour,
+        transitionBuilder: (child, animation, secondaryAnimation) =>
+            SharedAxisTransition(
+              transitionType: SharedAxisTransitionType.horizontal,
+              animation: animation,
+              secondaryAnimation: secondaryAnimation,
+              child: child,
+            ),
+        child: showOnlyYour
+            ? HomePageYou(
+                toggleView: toggleView,
+              )
+            : HomePageFriends(
+                toggleView: toggleView,
+              ));
   }
 }

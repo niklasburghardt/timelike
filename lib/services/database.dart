@@ -26,7 +26,12 @@ class DatabaseService {
           .document(getDate())
           .collection("Posts")
           .document()
-          .setData({'title': title, 'story': story, 'private': private});
+          .setData({
+        'title': title,
+        'story': story,
+        'private': private,
+        'time': getTime()
+      });
     } catch (error) {
       print("Unable to upload");
       return null;

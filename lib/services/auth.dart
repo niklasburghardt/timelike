@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:time_like/modules/user.dart';
 import 'package:time_like/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,15 +21,15 @@ class AuthService {
   }
 
   // sign in with email and password
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future<dynamic> signInWithEmailAndPassword(
+      String email, String password) async {
     try {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
       activeUserId = user.uid;
-      return user;
-    } catch (error) {
-      print(error.toString());
+    } catch (ex) {
+      print("Error");
       return null;
     }
   }

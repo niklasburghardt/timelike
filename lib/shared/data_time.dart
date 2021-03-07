@@ -6,3 +6,10 @@ String getDate() {
   String formattedDate = formatter.format(now);
   return formattedDate;
 }
+
+String getTime() {
+  var now = new DateTime.now();
+  var formatter = new DateFormat('hh:mm:ss');
+  String formattedDate = formatter.format(now);
+  return formattedDate;
+}
