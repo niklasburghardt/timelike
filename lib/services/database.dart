@@ -37,4 +37,22 @@ class DatabaseService {
       return null;
     }
   }
+
+  Future getOwnPostsDay(String day) async {
+    Map postDay = {day: {}};
+    int count = 0;
+    final CollectionReference dayPosts = userData
+        .document(uid)
+        .collection("Days")
+        .document(day)
+        .collection("Posts");
+    dayPosts.getDocuments().then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((DocumentSnapshot doc) {
+        count++;
+        postDay[day][doc.data["time"]] = doc.data;
+      });
+      print(postDay.toString());
+    });
+    print(postDay.toString());
+  }
 }

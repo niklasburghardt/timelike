@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:time_like/services/database.dart';
 import 'package:time_like/shared/constants.dart';
+import 'package:time_like/shared/data_time.dart';
 import 'package:time_like/shared/images.dart';
 
 class HomePageYou extends StatefulWidget {
@@ -11,6 +14,8 @@ class HomePageYou extends StatefulWidget {
 }
 
 class _HomePageYouState extends State<HomePageYou> {
+  List<List> allPosts = [];
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -80,10 +85,13 @@ class _HomePageYouState extends State<HomePageYou> {
   SliverList testList() {
     return SliverList(
         delegate: SliverChildListDelegate([
-      Container(
-        padding: EdgeInsets.all(40),
-        child: Text("Hello"),
-      ),
+      FlatButton(
+          onPressed: () async {
+            final FirebaseAuth auth = FirebaseAuth.instance;
+            final FirebaseUser user = await auth.currentUser();
+            DatabaseService(uid: user.uid).getOwnPostsDay(getDate());
+          },
+          child: Icon(Icons.get_app)),
       Container(
         padding: EdgeInsets.all(40),
         child: Text("Hello"),

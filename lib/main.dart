@@ -2,7 +2,6 @@ import 'package:time_like/pages/wrapper.dart';
 import 'package:time_like/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:time_like/modules/user.dart';
 import 'package:time_like/pages/entry_modules/create.dart';
 

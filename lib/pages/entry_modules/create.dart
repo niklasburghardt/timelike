@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
 import 'package:time_like/modules/user.dart';
 import 'package:time_like/services/auth.dart';
 import 'package:time_like/services/database.dart';
@@ -83,8 +84,8 @@ class _CreatePostState extends State<CreatePost> {
                                 FlatButton(
                                     child: Icon(Icons.camera_alt_outlined,
                                         color: Colors.white),
-                                    onPressed: () {
-                                      print("Take Photo");
+                                    onPressed: () async {
+                                      print("Look Here");
                                     }),
                                 IconButton(
                                     icon: Icon(privacy, color: Colors.white),
