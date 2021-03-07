@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "589607366910",
+    "project_id": "timelike-6e765",
+    "storage_bucket": "timelike-6e765.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589607366910:android:10932c1148fc7f20bef5af",
+        "android_client_info": {
+          "package_name": "com.niklasburghardt.time_like"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589607366910-gp9glgs8ul430l7gp68cfjtrfn6lv81q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlBBdmELwS-3nGS4y0SOpaPMo0F9OPgEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589607366910-gp9glgs8ul430l7gp68cfjtrfn6lv81q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
