@@ -6,8 +6,7 @@ class DatabaseService {
 
   DatabaseService({this.uid});
   //collection reference
-  final CollectionReference userData =
-      Firestore.instance.collection("UserData");
+  CollectionReference userData = Firestore.instance.collection("UserData");
 
   final CollectionReference posts = Firestore.instance.collection("Posts");
 
@@ -23,14 +22,14 @@ class DatabaseService {
       return await userData
           .document(uid)
           .collection("Days")
-          .document(getDate())
+          .document(getDateString())
           .collection("Posts")
           .document()
           .setData({
         'title': title,
         'story': story,
         'private': private,
-        'time': getTime()
+        'time': getCurrentTime()
       });
     } catch (error) {
       print("Unable to upload");
@@ -40,16 +39,16 @@ class DatabaseService {
 
   Future getOwnPostsDay(String day) async {
     Map postDay = {day: {}};
-    int count = 0;
-    final CollectionReference dayPosts = userData
+    userData
         .document(uid)
         .collection("Days")
         .document(day)
-        .collection("Posts");
-    dayPosts.getDocuments().then((QuerySnapshot snapshot) {
+        .collection("Posts")
+        .orderBy("time", descending: false)
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
       snapshot.documents.forEach((DocumentSnapshot doc) {
-        count++;
-        postDay[day][doc.data["time"]] = doc.data;
+        postDay[day][convertDateTmeToStringTime(doc.data["time"])] = doc.data;
       });
       print(postDay.toString());
     });

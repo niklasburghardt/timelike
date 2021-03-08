@@ -89,7 +89,7 @@ class _HomePageYouState extends State<HomePageYou> {
           onPressed: () async {
             final FirebaseAuth auth = FirebaseAuth.instance;
             final FirebaseUser user = await auth.currentUser();
-            DatabaseService(uid: user.uid).getOwnPostsDay(getDate());
+            DatabaseService(uid: user.uid).getOwnPostsDay(getDateString());
           },
           child: Icon(Icons.get_app)),
       Container(
