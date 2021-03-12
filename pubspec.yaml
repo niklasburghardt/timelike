@@ -35,6 +35,7 @@ dependencies:
   concentric_transition: ^0.1.1
   transition_x: ^1.2.2
   intl: ^0.16.1
+  path_provider: ^2.0.1
   
 
 

@@ -50,8 +50,7 @@ class DatabaseService {
       snapshot.documents.forEach((DocumentSnapshot doc) {
         postDay[day][convertDateTmeToStringTime(doc.data["time"])] = doc.data;
       });
-      print(postDay.toString());
+      return postDay;
     });
-    print(postDay.toString());
   }
 }

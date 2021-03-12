@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 const appName = 'Read Feed';
@@ -39,3 +40,9 @@ final kBoxDecorationStyle = BoxDecoration(
     ),
   ],
 );
+
+Future getUid() async {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseUser user = await auth.currentUser();
+  return user.uid;
+}

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:time_like/json_write/save_posts.dart';
 import 'package:time_like/services/database.dart';
 import 'package:time_like/shared/constants.dart';
 import 'package:time_like/shared/data_time.dart';
@@ -87,9 +88,7 @@ class _HomePageYouState extends State<HomePageYou> {
         delegate: SliverChildListDelegate([
       FlatButton(
           onPressed: () async {
-            final FirebaseAuth auth = FirebaseAuth.instance;
-            final FirebaseUser user = await auth.currentUser();
-            DatabaseService(uid: user.uid).getOwnPostsDay(getDateString());
+            loadVault();
           },
           child: Icon(Icons.get_app)),
       Container(
